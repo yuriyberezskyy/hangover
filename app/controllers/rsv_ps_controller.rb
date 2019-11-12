@@ -1,0 +1,2 @@
+class RsvPsController < ApplicationController
+end
