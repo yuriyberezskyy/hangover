@@ -40,4 +40,7 @@ def self.add_bars_by_yelp_data(business)
        )
    end
 
+
+  
+
 end

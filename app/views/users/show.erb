@@ -1,0 +1,18 @@
+<h1>These are your spots, cool cat</h1>
+
+<div class="cards">
+<% @businesses.each do |business| %>
+<div class= "card">
+<img src= <%= business.img_url %>>
+<br/>
+<%= link_to business.name, business %>
+</div>
+<% end%>
+</div>
+
+
+<% if @current_user.rsvps%>
+<h2>These are the parties you're going to, you wild cat!</h2>
+<% @current_user.rsvps.each do |rsvp|%>
+<%= link_to rsvp.party_time.occasion, rsvp.party_time.business %> 
+<% end%>

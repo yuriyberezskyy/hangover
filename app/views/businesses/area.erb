@@ -1,0 +1,7 @@
+<h1> Please choose area</h1>
+
+<%= form_for :area, url: '/area' do |f| %>
+  <%= f.select :area, @areas %>      
+  <%= f.submit %>
+<% end %>
+  

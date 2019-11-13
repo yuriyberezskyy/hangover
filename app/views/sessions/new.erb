@@ -1,0 +1,16 @@
+<h1>Welcome Back, Cool Person</h1>
+
+<%= form_for :session, url: "/login"  do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  
+  <% if flash[:errors] %>
+    <ol class="messages">
+      <%= flash[:errors]%>
+  <% end %>
+  
+  <%= f.submit "Sign In" %>
+<% end %>

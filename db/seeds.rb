@@ -18,7 +18,7 @@ def search(type, location)
    term: type,
    location: location,
    limit: 3,
-   radius: 1000
+   radius: 10000
    }
    response = HTTP.auth("Bearer #{ENV['KEY']}").get(url, params: params)
    response.parse["businesses"]
