@@ -1,0 +1,33 @@
+<h1>Top 3 Nightclubs:</h1>
+
+<nav class="cards">
+<% @nightclubs.where(area: session[:area]).each do |club| %>
+<div class= "card">
+<img src= <%= club.img_url %>>
+<br/>
+<%= link_to club.name, club %>
+</div>
+<% end%>
+</nav>
+
+<h1>Top 3 Bars:</h1>
+<div class="cards">
+<% @bars.where(area: session[:area]).each do |bar| %>
+<div class= "card">
+<img src= <%= bar.img_url %>>
+<br/>
+<%= link_to bar.name, bar %>
+</div>
+<% end%>
+</div>
+
+<h1>Top 3 Restaurants:</h1>
+<div class="cards">
+<% @rests.where(area: session[:area]).each do |rest| %>
+<div class= "card">
+<img src= <%= rest.img_url %>>
+<br/>
+<%= link_to rest.name, rest %>
+</div>
+<% end%>
+</div>

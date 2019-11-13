@@ -1,0 +1,24 @@
+<h1>Let Me Get Those Deets</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+    <%= f.label :full_name %>
+  <%= f.text_field :full_name %>
+  
+  <% if flash[:errors] %>
+    <ol class="messages">
+      <% flash[:errors].each do |error| %>
+        <li>
+          <%= error %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+  
+  <%= f.submit %>
+<% end %>

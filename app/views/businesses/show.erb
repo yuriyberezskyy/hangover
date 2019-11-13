@@ -1,0 +1,47 @@
+<div class="show">
+
+<h1><%= link_to @business.name, @business.url %></h1>
+<img src=<%= @business.img_url %> alt=<%= @business.name%> >
+
+<%#See the Restaurant model for how we get average_review_stars%>
+<%= @business.rating%>
+<p><strong>Address: </strong><%= @business.location %></p>
+
+<%= form_for @review do |f| %>
+    <%= f.label :content %></br>
+    <%= f.text_area :content %></br>
+    <%= f.label :rating %></br>
+    <%= f.number_field :rating, in: 1..5 %></br>
+    <%= f.hidden_field :business_id, :value => @business.id %>
+    <%= f.submit %>
+<% end %>
+<h1>Reviews!</h1>
+<div class="reviews">
+
+
+    <%@business.reviews.each do |review|%>
+        <div class="review">
+            
+            <br/>
+            <strong><%= review.user.email %>: </strong> 
+             <%= review.content  %>
+             (Rating: <% review.rating.to_i.times do |item| %>
+                    ⭐️
+                <% end%>)
+        </div>
+    <% end%>
+</div>
+
+<% if @business.party_times%>
+
+    <h3>These are the crazy parties happening here, wow, can you believe it?</h3>
+    <p>Select one to join</p>
+    <%= form_for(@rsvp) do |f| %>
+    <%= f.collection_select :party_time_id, @business.party_times, :id, :occasion %>
+    <%= f.collection_select :party_time_id, @business.party_times, :id, :date %>
+    <%= f.submit "Join" %>
+<% end %>
+ 
+ <% end %> 
+
+</div>

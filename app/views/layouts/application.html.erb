@@ -9,6 +9,28 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+   <header class="menu">
+      <div class="container">
+        <nav>
+          <%= link_to "Choose Area", area_path, class: "item" %>
+          <% if @current_user %>
+          <%= link_to "Your Spots", @current_user, class: "item" %>
+          <% end%>
+        </nav>
+        <nav class="right">
+          <span class="item">
+            <% if @current_user %>
+              Welcome, <%= @current_user.full_name %>!
+              <%= link_to "Logout", logout_path, method: :delete, class: "item" %>
+            <% else %>
+              <%= link_to "Signup", signup_path, class: "item" %>
+              <%= link_to "Login", login_path, class: "item" %>
+            <% end %>
+          </span>
+        </nav>
+      </div>
+    </header>
+
   <body>
     <%= yield %>
   </body>
