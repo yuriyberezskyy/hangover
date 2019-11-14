@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "/area", to: "businesses#area", as: "area"
   post "/area", to: "businesses#set_area"
-  
+  root 'sessions#new' 
   
   resources :sessions
   resources :reviews

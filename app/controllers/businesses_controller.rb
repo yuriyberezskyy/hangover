@@ -9,6 +9,7 @@ class BusinessesController < ApplicationController
       @business = Business.find(params[:id])
       @review = Review.new
       @rsvp = Rsvp.new
+      @party_time = PartyTime.new
    end
 
     def area 

@@ -1,11 +1,34 @@
 // Place all the styles related to the businesses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-img {
-    width: 10rem;
-    
+
+body {
+    background-color: violet;
 }
 
-div{
-    display: -webkit-inline-flex;
+
+img {
+    width: 10rem;
+    height: 10rem;
+    border: .3rem solid black
 }
+
+a {
+    border: .1rem ridge black;
+    margin: .4rem;
+    background-color: gray;
+    padding: .1rem .1rem .3rem;
+    text-decoration-color: crimson;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+   font-family: 'Courier New', Courier, monospace; 
+}
+
+span.item {
+    font-family: 'Courier New', Courier, monospace; 
+    margin-left: 50rem;
+}
+
+

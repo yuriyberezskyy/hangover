@@ -4,6 +4,7 @@
 <img src=<%= @business.img_url %> alt=<%= @business.name%> >
 
 <%#See the Restaurant model for how we get average_review_stars%>
+<h3>Rating:</h3>
 <%= @business.rating%>
 <p><strong>Address: </strong><%= @business.location %></p>
 
@@ -32,16 +33,30 @@
     <% end%>
 </div>
 
-<% if @business.party_times%>
+<% unless @business.party_times.empty? %>
 
     <h3>These are the crazy parties happening here, wow, can you believe it?</h3>
     <p>Select one to join</p>
     <%= form_for(@rsvp) do |f| %>
     <%= f.collection_select :party_time_id, @business.party_times, :id, :occasion %>
     <%= f.collection_select :party_time_id, @business.party_times, :id, :date %>
+     <%= f.hidden_field :user_id , :value => @current_user.id %>
     <%= f.submit "Join" %>
 <% end %>
  
  <% end %> 
 
+ <%= form_for @party_time do |f| %>
+ <%= f.label 'Create your party'  %>
+ <%= f.date_field :date ,min: Date.today %>
+ <%= f.text_field :occasion %>
+ <%= f.hidden_field :business_id , :value => @business.id %>
+ <%= f.submit %>
+ <% end %>
+
+  <% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+  <p><%= error %></p>
+  <% end %>
+  <% end %> 
 </div>
