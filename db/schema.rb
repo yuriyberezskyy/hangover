@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_11_13_140050) do
   create_table "party_times", force: :cascade do |t|
     t.string "date"
     t.string "occasion"
+    t.integer "creator_id"
+    t.string "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "business_id"

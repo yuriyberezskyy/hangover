@@ -21,6 +21,7 @@ class PartyTimesController < ApplicationController
    end
 
    def update
+    
     @party_time = PartyTime.find(params[:id])
       @party_time.update(strong_params)
       if @party_time.valid?
@@ -40,6 +41,6 @@ class PartyTimesController < ApplicationController
 
    private
    def strong_params
-   strong_params = params.require(:party_time).permit(:date,:occasion,:business_id)
+   strong_params = params.require(:party_time).permit(:date,:occasion,:business_id, :creator_id, :time)
    end
 end

@@ -1,6 +1,6 @@
 <h1>Top 3 Nightclubs:</h1>
 
-<nav class="cards">
+<div class="cards">
 <% @nightclubs.where(area: session[:area]).each do |club| %>
 <div class= "card">
 <img src= <%= club.img_url %>>
@@ -8,7 +8,7 @@
 <%= link_to club.name, club %>
 </div>
 <% end%>
-</nav>
+</div>
 
 <h1>Top 3 Bars:</h1>
 <div class="cards">
