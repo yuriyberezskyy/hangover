@@ -1,5 +1,5 @@
 <% unless @current_user.businesses.empty? %>
-<h1>These are your spots, cool cat.</h1>
+<h1>These are your reviewed spots, cool cat.</h1>
 <% else%>
 <h1>Search for some cool spots to review to add here, stray cat!</h1>
 <%end  %>
@@ -15,9 +15,12 @@
 </div>
 
 <% unless @current_user.rsvps.empty? || @current_user.rsvps.nil?%>
-<h2>These are the parties you're going to, you wild cat!</h2>
+<h2>These are the parties you're going to, wild cat!</h2>
 <% @current_user.rsvps.each do |rsvp|%>
-    <%= link_to rsvp.party_time.occasion, rsvp.party_time.business %> 
+    <div class= "card">
+    <img src=<%=rsvp.party_time.business.img_url%>>
+    </div>
+    <%= link_to rsvp.party_time.occasion, rsvp.party_time.business %> at   <%= link_to rsvp.party_time.business.name, rsvp.party_time.business %>
     Going down on <%= rsvp.party_time.date %> at <%= rsvp.party_time.time %>
     <% if rsvp.party_time.creator_id == @current_user.id %>
     <%= link_to "Edit party", edit_party_time_path(rsvp.party_time) %> 
