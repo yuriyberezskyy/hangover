@@ -9,4 +9,10 @@ class RsvpsController < ApplicationController
      @new_rsvp = Rsvp.create(strong_params)
      redirect_to @new_rsvp.user
    end
+
+   def destroy
+      @rsvp = Rsvp.find(params[:id])
+      @rsvp.destroy
+      redirect_to @current_user
+     end
 end

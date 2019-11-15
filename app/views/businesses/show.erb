@@ -1,12 +1,16 @@
 <div class="show">
 
 <h1><%= link_to @business.name, @business.url %></h1>
-<img src=<%= @business.img_url %> alt=<%= @business.name%> >
+<img id="show" src=<%= @business.img_url %> alt=<%= @business.name%> >
 
 <%#See the Restaurant model for how we get average_review_stars%>
 <h3>Rating:</h3>
-<%= @business.rating%>
-<p><strong>Address: </strong><%= @business.location %></p>
+ <% @business.rating.to_i.times do |item| %>
+                    🍸
+                <% end%>
+<h3><strong>Address: </strong><%= @business.location %>
+
+</h3>
 
 <%= form_for @review do |f| %>
     <%= f.label :content %></br>
@@ -16,6 +20,8 @@
     <%= f.hidden_field :business_id, :value => @business.id %>
     <%= f.submit %>
 <% end %>
+
+<% unless @business.reviews.empty?%>
 <h1>Reviews!</h1>
 <div class="reviews">
 
@@ -24,14 +30,15 @@
         <div class="review">
             
             <br/>
-            <strong><%= review.user.email %>: </strong> 
+            <strong><%= review.user.username %>: </strong> 
              <%= review.content  %>
              (Rating: <% review.rating.to_i.times do |item| %>
-                    ⭐️
+                    🍸
                 <% end%>)
         </div>
     <% end%>
 </div>
+<% end%>
 
 <% unless @business.party_times.empty? %>
 
@@ -45,12 +52,19 @@
 <% end %>
  
  <% end %> 
+<br>
+<br>
+
 
  <%= form_for @party_time do |f| %>
  <%= f.label 'Create your party'  %>
+ <br>
  <%= f.date_field :date ,min: Date.today %>
  <%= f.text_field :occasion %>
+  <%= f.time_field :time %>
  <%= f.hidden_field :business_id , :value => @business.id %>
+<%= f.hidden_field :creator_id , :value => @current_user.id %>
+
  <%= f.submit %>
  <% end %>
 

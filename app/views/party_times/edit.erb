@@ -1,9 +1,10 @@
 <h1>Edit your party:</h1>
 <%= form_for @party_time do |f| %>
- <%= f.label 'Create your party'  %>
  <%= f.date_field :date ,min: Date.today %>
  <%= f.text_field :occasion %>
+ <%= f.time_field :time %>
  <%= f.hidden_field :business_id , :value => @party_time.business.id %>
+ <%= f.hidden_field :creator_id , :value => @current_user.id %>
  <%= f.submit %>
  <% end %>
 

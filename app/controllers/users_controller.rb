@@ -2,9 +2,12 @@ class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
 
   def new
+    if @current_user
+      redirect_to @current_user
+    else
     @user = User.new
     # render :new
-    
+    end
   end
 
   def create

@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
 
 
   def new
-    # render :new
+    if session[:user_id]
+      redirect_to @current_user
+    end
   end
 
   def create
@@ -13,7 +15,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # if the password is correct, save user_id to session
       session[:user_id] = user.id
-      if user.businesses.empty?&&user.places.empty?
+      if user.businesses.empty?
       redirect_to area_path
       else
       redirect_to user
